@@ -70,10 +70,13 @@ Meteor.subscribe("tasks");
       Meteor.call("setPrivate", this._id, ! this.private);
     }
   });
-
-  Accounts.ui.config({
-    passwordSignupFields: "USERNAME_ONLY"
-  });
+  Accounts.config({
+   restrictCreationByEmailDomain: 'something.edu'
+    });
+  //
+  //Accounts.ui.config({
+   // passwordSignupFields: "USERNAME_ONLY"
+  //});
 
 }
 
