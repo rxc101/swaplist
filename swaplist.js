@@ -18,9 +18,21 @@ if (Meteor.isClient) {
       });
 
       Template.Register.onRendered(function(){
-          console.log("The 'register' template was just rendered.");
-          $('.Register').validate(); //attach jQuery validate fcn to form
-      });
+          //console.log("The 'register' template was just rendered.");
+          $('.Register').validate({ //attach jQuery validate fcn to form
+            rules: {
+              email: {
+                  required: true,
+                  email: true
+              },
+              password: {
+                  required: true,
+                  minlength: 6
+              }
+            }
+          }); 
+     });
+      
 
       Template.Register.onDestroyed(function(){
           console.log("The 'register' template was just destroyed.");
