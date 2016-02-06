@@ -1,11 +1,17 @@
 <head>
-  <title>Todo List</title>
+  <title>Icelist</title>
 </head>
- 
 
 <template name="Home">
+
+
   <div class="container">
-    <header>
+    <header> 
+    <h3>Welcome to IceList</h3>
+    <center><h5>The campus resources to save you money.</h5></center>
+    <br />
+
+      <!--
       <h1>Todo List ({{incompleteCount}})</h1>
         <label class="hide-completed">
         <input type="checkbox" checked="{{hideCompleted}}" />
@@ -18,19 +24,28 @@
         <form class="new-task">
           <input type="text" name="text" placeholder="Type to add new tasks" />
         </form>
-      {{/if}}
+      {{/if}} -->
     </header>
- 
+    <h2>Login</h2>
+      <form class="Login">
+         <p>Email: <input type="email" name="email"></p>
+         <p>Password: <input type="password" name="password"></p>
+         <p><input type="submit" value="Login"></p>
+      </form>
+      <br /><br />
+      <h4>Don't have an account?</h4>
+    <a href='Register'>Click here to register</a>
+ <!--
     <ul>
       {{#each tasks}}
         {{> task}}
       {{/each}}
     </ul>
-
+-->
   </div>
 </template>
 
- 
+ <!--
 <template name="task">
    <li class="{{#if checked}}checked{{/if}}">
     <button class="delete">&times;</button>
@@ -49,5 +64,23 @@
  	<span class="text"><strong>{{username}}</strong> - {{text}}</span>
   </li>
 </template>
+ -->
 
-
+<template name="Register">
+<div class="container">
+<header>
+  <h2>Register</h2>
+</header>
+  <form class="Register">
+     <p>Email: <input type="email" name="Email"></p>
+     <p>First Name: <input type="text" name="FirstName"></p>
+     <p>Last Name: <input type="text" name="LastName"></p>
+     <p>Birthday: <input type="date" name="Birthday"></p>
+     <p>Major <input type="text" name="Major"></p>
+     <p>Graduation Date: <input type="date" name="GradDate"></p>
+     <p>Phone: <input type="text" name="Phone"></p>
+     <p>Password: <input type="password" name="Password"></p>
+     <p><input type="submit" value="Register"></p>
+  </form>
+  </div>
+</template>

@@ -68,6 +68,36 @@ Meteor.subscribe("tasks");
       Meteor.call("setPrivate", this._id, ! this.private);
     }
   });
+
+  Template.Register.events({
+    'submit form' : function(event){
+        event.preventDefault();
+        var email = $('[name=Email]').val();
+        var firstName = $('[name=FirstName]').val();
+        var lastName = $('[name=LastName]').val();
+        var birthday = $('[name=Birthday]').val();
+        var major = $('[name=Major]').val();
+        var gradDate = $('[name=GradDate]').val();
+        var phone = $('[name=Phone]').val();
+        var password = $('[name=Password]').val();
+
+        //we need to validate the data first then 
+        //call Accounts.createUser to add to db
+        Accounts.createUser({
+            email: email,
+            firstname: firstname,
+            lastname: lastname,
+            birthday: birthday,
+            major: major,
+            gradDate: gradDate,
+            phone: phone,
+            password:password
+        });
+    
+        //Router.go('Home'); //redirect user to different page
+    }
+
+  });
   /*
   Accounts.config({
    restrictCreationByEmailDomain: 'pitt.edu'
