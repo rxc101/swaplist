@@ -10,6 +10,22 @@ if (Meteor.isServer) {
 
 if (Meteor.isClient) {
   // This code only runs on the client
+
+          //the following functions handle the lifecycle of the form 
+        //submission and validation
+      Template.Register.onCreated(function(){
+          console.log("The 'register' template was just created.");
+      });
+
+      Template.Register.onRendered(function(){
+          console.log("The 'register' template was just rendered.");
+          $('.Register').validate(); //attach jQuery validate fcn to form
+      });
+
+      Template.Register.onDestroyed(function(){
+          console.log("The 'register' template was just destroyed.");
+      });
+
 Meteor.subscribe("tasks");
   Template.body.helpers({
     tasks: function () {
@@ -49,13 +65,14 @@ Meteor.subscribe("tasks");
     }
   });
 
+/*
   Template.task.helpers({
     isOwner: function () {
       return this.owner === Meteor.userId();
     }
   });
- 
- 
+*/
+/*
   Template.task.events({
     "click .toggle-checked": function () {
       // Set the checked property to the opposite of its current value
@@ -68,10 +85,25 @@ Meteor.subscribe("tasks");
       Meteor.call("setPrivate", this._id, ! this.private);
     }
   });
+*/
+
+////////////////////////////////////////////////////////////////////////
+//Register //
+////////////////////////////////////////////////////////////////////////
+
+
 
   Template.Register.events({
     'submit form' : function(event){
         event.preventDefault();
+
+
+
+
+
+
+
+        /*
         var email = $('[name=Email]').val();
         var firstName = $('[name=FirstName]').val();
         var lastName = $('[name=LastName]').val();
@@ -81,8 +113,8 @@ Meteor.subscribe("tasks");
         var phone = $('[name=Phone]').val();
         var password = $('[name=Password]').val();
 
-        //we need to validate the data first then 
-        //call Accounts.createUser to add to db
+        we need to validate the data first then 
+        call Accounts.createUser to add to db
         Accounts.createUser({
             email: email,
             firstname: firstname,
@@ -98,16 +130,16 @@ Meteor.subscribe("tasks");
     }
 
   });
-  /*
+  
   Accounts.config({
    restrictCreationByEmailDomain: 'pitt.edu'
     });
-    /* was getting error that it was called on the client but not on the server
-  //
+    // was getting error that it was called on the client but not on the server
+  
   //Accounts.ui.config({
    // passwordSignupFields: "USERNAME_ONLY"
   //});
-/*
+
 Template.register.events({
     'submit form': function(event){
         event.preventDefault();
@@ -116,9 +148,9 @@ Template.register.events({
     }
 });
 */
+  }
 
-
-}
+});
 
 Meteor.methods({
   addTask: function (text) {
@@ -162,3 +194,5 @@ Meteor.methods({
     Tasks.update(taskId, { $set: { private: setToPrivate } });
   }
 });
+
+}
