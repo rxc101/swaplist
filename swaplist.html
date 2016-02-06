@@ -2,7 +2,8 @@
   <title>Todo List</title>
 </head>
  
-<body>
+
+<template name="Home">
   <div class="container">
     <header>
       <h1>Todo List ({{incompleteCount}})</h1>
@@ -25,8 +26,10 @@
         {{> task}}
       {{/each}}
     </ul>
+
   </div>
-</body>
+</template>
+
  
 <template name="task">
    <li class="{{#if checked}}checked{{/if}}">
@@ -46,3 +49,5 @@
  	<span class="text"><strong>{{username}}</strong> - {{text}}</span>
   </li>
 </template>
+
+

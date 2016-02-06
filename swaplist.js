@@ -8,8 +8,6 @@ if (Meteor.isServer) {
 }
 
 
-
-
 if (Meteor.isClient) {
   // This code only runs on the client
 Meteor.subscribe("tasks");
@@ -70,16 +68,27 @@ Meteor.subscribe("tasks");
       Meteor.call("setPrivate", this._id, ! this.private);
     }
   });
+  /*
   Accounts.config({
-   restrictCreationByEmailDomain: 'something.edu'
+   restrictCreationByEmailDomain: 'pitt.edu'
     });
+    /* was getting error that it was called on the client but not on the server
   //
   //Accounts.ui.config({
    // passwordSignupFields: "USERNAME_ONLY"
   //});
+/*
+Template.register.events({
+    'submit form': function(event){
+        event.preventDefault();
+        var email = $('[name=email]').val();
+        var password = $('[name=password]').val();
+    }
+});
+*/
+
 
 }
-
 
 Meteor.methods({
   addTask: function (text) {
