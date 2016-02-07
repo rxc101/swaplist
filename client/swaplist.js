@@ -1,14 +1,7 @@
 Tasks = new Mongo.Collection("tasks");
  
-if (Meteor.isServer) {
-  // This code only runs on the server
-  Meteor.publish("tasks", function () {
-    return Tasks.find();
-  });
-}
 
 
-if (Meteor.isClient) {
   // This code only runs on the client
 
           //the following functions handle the lifecycle of the form 
@@ -109,13 +102,6 @@ Meteor.subscribe("tasks");
     'submit form' : function(event){
         event.preventDefault();
 
-
-
-
-
-
-
-        /*
         var email = $('[name=Email]').val();
         var firstName = $('[name=FirstName]').val();
         var lastName = $('[name=LastName]').val();
@@ -125,44 +111,35 @@ Meteor.subscribe("tasks");
         var phone = $('[name=Phone]').val();
         var password = $('[name=Password]').val();
 
-        we need to validate the data first then 
-        call Accounts.createUser to add to db
+        console.log("submit button pushed, event fired");
+        //we need to validate the data first then 
+        //call Accounts.createUser to add to db
         Accounts.createUser({
             email: email,
-            firstname: firstname,
-            lastname: lastname,
+            firstname: firstName,
+            lastname: lastName,
             birthday: birthday,
             major: major,
             gradDate: gradDate,
             phone: phone,
             password:password
         });
-    
-        //Router.go('Home'); //redirect user to different page
+        //this gives me an error "no route named: Home"
+        Router.go('Home'); //redirect user to different page
+
     }
 
+
   });
-  
-  Accounts.config({
-   restrictCreationByEmailDomain: 'pitt.edu'
-    });
-    // was getting error that it was called on the client but not on the server
-  
+   
   //Accounts.ui.config({
    // passwordSignupFields: "USERNAME_ONLY"
   //});
 
-Template.register.events({
-    'submit form': function(event){
-        event.preventDefault();
-        var email = $('[name=email]').val();
-        var password = $('[name=password]').val();
-    }
-});
-*/
-  }
+  
 
-});
+
+
 
 Meteor.methods({
   addTask: function (text) {
@@ -207,4 +184,3 @@ Meteor.methods({
   }
 });
 
-}
